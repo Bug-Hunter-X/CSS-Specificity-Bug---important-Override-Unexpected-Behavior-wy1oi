@@ -1,0 +1,46 @@
+To solve the unexpected behavior, you need to understand CSS specificity and adjust your code accordingly. Here are a few solutions:
+
+**Solution 1 (Adjust Specificity):**
+
+Instead of relying on `!important`, ensure that the selector for the intended style has higher specificity than any conflicting selector. In this case, it could be:
+
+```css
+.parent {
+  color: blue;
+}
+
+.child {
+  color: red;
+}
+
+.parent .child {
+  color: green !important; /* Higher Specificity */
+}
+```
+
+**Solution 2 (Use More Specific Selector):**
+
+If you really need to use !important, make sure the selector with !important is sufficiently specific to override any other selectors:
+
+```css
+.parent {
+  color: blue;
+}
+
+.child {
+  color: red !important;
+}
+
+.parent .child {
+  color: green;
+}
+
+/*This is a solution to solve bug using a class*/
+.parent .child.special {
+  color: green !important; /* Add a specific class to override */
+}
+```
+
+**Solution 3 (Avoid !important):**
+
+The best practice is often to avoid `!important` altogether and focus on writing well-structured, specific CSS to prevent such conflicts.  Re-evaluate your styling approach and try to resolve the conflict using standard CSS selectors with appropriate specificity.
