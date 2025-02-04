@@ -1,0 +1,17 @@
+The following CSS code has an uncommon bug related to specificity and inheritance:
+
+```css
+.parent {
+  color: blue;
+}
+
+.child {
+  color: red !important;
+}
+
+.parent .child {
+  color: green;
+}
+```
+
+The unexpected behavior is that the `.child` element within the `.parent` element will have the color green, not red as one might expect given the `!important` declaration. This is because the specificity of `.parent .child` is higher than that of `.child` alone, causing the `!important` declaration to be overridden. 
